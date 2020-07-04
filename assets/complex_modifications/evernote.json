@@ -1,0 +1,51 @@
+{
+  "title": "evernote",
+  "rules": [
+    {
+      "description": "Contrl+V → Command+V",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {"key_code": "v", "modifiers": {"mandatory": ["control"]}},
+          "to": [{"key_code": "v", "modifiers": ["left_command", "shift"]}],
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": ["^com\\.evernote\\.Evernote$"]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "v",
+            "modifiers": {"mandatory": ["control", "shift"]}
+          },
+          "to": [{"key_code": "v", "modifiers": ["left_command"]}],
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": ["^com\\.evernote\\.Evernote$"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Search note Ctrl-q",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {"key_code": "q", "modifiers": {"mandatory": ["control"]}},
+          "to": [{"key_code": "f", "modifiers": ["left_command","option"]}],
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": ["^com\\.evernote\\.Evernote$"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

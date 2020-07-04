@@ -1,0 +1,50 @@
+{
+  "title": "Bear.app",
+  "rules": [
+    {
+      "description": "Bear : Ctrl+W で単語を削除する",
+      "manipulators": [ {
+        "type": "basic",
+        "from": { "key_code": "w", "modifiers": { "mandatory": [ "control" ]} },
+        "to": [ { "key_code": "delete_or_backspace", "modifiers": [ "left_option" ] } ],
+        "conditions": [ {
+          "type": "frontmost_application_if",
+          "bundle_identifiers": [ "^net\\.shinyfrog\\.bear$", "^com\\.evernote\\.Evernote$" ]
+        } ]
+      } ]
+    },
+    {
+      "description": "Bear : Ctrl+U で undo",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": { "key_code": "u", "modifiers": { "mandatory": [ "control" ]} },
+          "to": [ { "key_code": "z", "modifiers": [ "command" ] } ],
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "^net\\.shinyfrog\\.bear$",
+                "^com\\.evernote\\.Evernote$"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": { "key_code": "y", "modifiers": { "mandatory": [ "control" ]} },
+          "to": [ { "key_code": "z", "modifiers": [ "shift", "command" ] } ],
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "^net\\.shinyfrog\\.bear$",
+                "^com\\.evernote\\.Evernote$"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

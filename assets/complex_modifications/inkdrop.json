@@ -1,0 +1,17 @@
+{
+  "title": "Inkdrop.app",
+  "rules": [
+    {
+      "description": "C-q → Cmd + Shift + f",
+      "manipulators": [ {
+        "type": "basic",
+        "from": { "key_code": "q", "modifiers": { "mandatory": [ "control" ]} },
+        "to": [{"key_code": "f", "modifiers": ["left_command", "shift"]}],
+        "conditions": [ {
+          "type": "frontmost_application_if",
+          "bundle_identifiers": [ "^info.pkpk.inkdrop$" ]
+        } ]
+      } ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "title": "ESCまたは^[でIMEをOFF",
+    "rules": [
+      {
+        "description": "VimでESCまたは <C-j>を押したときにIMEをOFFにする",
+        "manipulators": [
+          {
+            "type": "basic",
+            "from": { "key_code": "escape", "modifiers": { "optional": [ "any" ] } },
+            "to": [
+              { "key_code": "lang2" },
+              { "key_code": "escape" } 
+            ],
+            "conditions": [ { "type": "frontmost_application_if", "bundle_identifiers": [ "^com\\.apple\\.Terminal$", "^org\\.vim\\.", "^com\\.googlecode\\.iterm2$", "^info\\.pkpk\\.inkdrop$", "^com.microsoft.VSCode" ] } ]
+          },
+          {
+            "type": "basic",
+            "from": { "key_code": "j", "modifiers": { "mandatory": ["left_control"] } },
+            "to": [
+              { "key_code": "lang2" },
+              { "key_code": "escape" } 
+            ],
+            "conditions": [ { "type": "frontmost_application_if", "bundle_identifiers": [ "^com\\.apple\\.Terminal$", "^org\\.vim\\.", "^com\\.googlecode\\.iterm2$", "^info\\.pkpk\\.inkdrop$", "^com.microsoft.VSCode" ] } ]
+          }
+        ]
+      }
+    ]
+}
