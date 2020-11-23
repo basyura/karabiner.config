@@ -57,7 +57,7 @@
             "key_code": "return_or_enter",
             "modifiers": { "mandatory": ["control"] }
           },
-          "to": [{ "key_code": "open_bracket", "modifiers": ["control"] }],
+          "to": [{ "key_code": "close_bracket", "modifiers": ["control"] }],
           "conditions": [
             {
               "type": "frontmost_application_if",
