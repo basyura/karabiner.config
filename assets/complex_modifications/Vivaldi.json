@@ -57,7 +57,7 @@
             "key_code": "return_or_enter",
             "modifiers": { "mandatory": ["control"] }
           },
-          "to": [{ "key_code": "close_bracket", "modifiers": ["control"] }],
+          "to": [{ "key_code": "backslash", "modifiers": ["control"] }],
           "conditions": [
             {
               "type": "frontmost_application_if",
@@ -65,6 +65,20 @@
             }
           ]
         }
+      ]
+    },
+    {
+      "description": "Vivaldi C-J Escape",
+      "manipulators": [
+          {
+            "type": "basic",
+            "from": { "key_code": "j", "modifiers": { "mandatory": ["left_control"] } },
+            "to": [
+              { "key_code": "lang2" },
+              { "key_code": "escape" } 
+            ],
+            "conditions": [ { "type": "frontmost_application_if", "bundle_identifiers": ["^com\\.vivaldi\\.Vivaldi$"] } ]
+          }
       ]
     }
   ]

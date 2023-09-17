@@ -1,0 +1,40 @@
+{
+  "title": "finder",
+  "rules": [
+    {
+      "description": "switch tab : Ctrl + . / Ctrl + ,",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "period",
+            "modifiers": { "mandatory": ["control"] }
+          },
+          "to": {
+            "modifiers": { "optional": ["tab"] }
+          },
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": ["^com.apple.finder$"]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "comma",
+            "modifiers": { "mandatory": ["left_ control"] }
+          },
+          "to": [{ "modifiers": ["shift", "left_control", "tab"] }],
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": ["^com.apple.finder$"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
