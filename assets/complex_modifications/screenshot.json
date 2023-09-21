@@ -1,0 +1,31 @@
+{
+  "title" : "screen shot",
+  "rules": [
+    {
+      "description": "screen shot to command+control+q",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "q",
+            "modifiers": {
+              "mandatory": [
+                "control",
+                "command"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "4",
+              "modifiers": [
+                "shift",
+                "command"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
