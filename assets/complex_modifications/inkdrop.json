@@ -2,7 +2,7 @@
   "title": "Inkdrop.app",
   "rules": [
     {
-      "description": "C-q → Cmd + Shift + f",
+      "description": "Inkdrop : C-q → Cmd + Shift + f",
       "manipulators": [ {
         "type": "basic",
         "from": { "key_code": "q", "modifiers": { "mandatory": [ "control" ]} },
@@ -12,6 +12,50 @@
           "bundle_identifiers": [ "^info.pkpk.inkdrop$" ]
         } ]
       } ]
+    },
+    {
+      "description": "Inkdrop : 左 Ctrl + 右 Shift で Inkdrop を前面に表示",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "right_shift",
+            "modifiers": { "mandatory": ["left_control"] }
+          },
+          "to": [
+            {
+              "shell_command": "open -a Inkdrop"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Inkdrop : C-r の前に IME OFF",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "r",
+            "modifiers": { "mandatory": ["left_control"] }
+          },
+          "to": [
+            { "key_code": "lang2" }
+          ],
+          "to_after_key_up": [
+            {
+              "key_code": "r",
+              "modifiers": ["left_control"]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [ "^info.pkpk.inkdrop$" ]
+            }
+          ]
+        }
+      ]
     }
   ]
 }

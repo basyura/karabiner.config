@@ -49,7 +49,7 @@
       ]
     },
     {
-      "description": "Vivaldi C+Enter GoogleIME",
+      "description": "Vivaldi C+Enter GoogleIME to yosokuhenkan",
       "manipulators": [
         {
           "type": "basic",
@@ -77,8 +77,104 @@
               { "key_code": "lang2" },
               { "key_code": "escape" } 
             ],
-            "conditions": [ { "type": "frontmost_application_if", "bundle_identifiers": ["^com\\.vivaldi\\.Vivaldi$"] } ]
+            "conditions": [ { "type": "frontmost_application_if", "bundle_identifiers": ["^com\\.vivaldi\\.Vivaldi$", "^com\\.vivaldi\\.Vivaldi\\.app.*"] } ]
           }
+      ]
+    },
+    {
+      "description": "Vivaldi C-L",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": { "key_code": "l", "modifiers": { "mandatory": ["left_control"] } },
+          "to": [
+            { "key_code": "lang2" },
+            { "key_code": "escape" },
+            { "key_code": "l", "modifiers": ["control"] }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": ["^com\\.vivaldi\\.Vivaldi$", "^com\\.vivaldi\\.Vivaldi\\.app.*"]
+            },
+            {
+              "type": "input_source_if",
+              "input_sources": [
+                {
+                  "input_mode_id": "^com.apple.inputmethod.Japanese$"
+                }
+              ]
+            },
+            {
+              "type": "variable_if",
+              "name": "karabiner.input_mode",
+              "value": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Vivaldi C-X-L sequence",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "x",
+            "modifiers": {
+              "mandatory": ["control"]
+            }
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "c_x_pressed",
+                "value": 1
+              }
+            }
+          ],
+          "to_if_alone": [],
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": ["^com\\.vivaldi\\.Vivaldi$", "^com\\.vivaldi\\.Vivaldi\\.app.*"]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "l",
+            "modifiers": {
+              "mandatory": ["control"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "right_arrow",
+              "modifiers": ["command", "shift"]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "c_x_pressed",
+              "value": 1
+            },
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": ["^com\\.vivaldi\\.Vivaldi$", "^com\\.vivaldi\\.Vivaldi\\.app.*"]
+            }
+          ],
+          "to_after_key_up": [
+            {
+              "set_variable": {
+                "name": "c_x_pressed",
+                "value": 0
+              }
+            }
+          ]
+        }
       ]
     }
   ]

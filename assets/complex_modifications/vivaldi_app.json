@@ -1,0 +1,68 @@
+{ "title": "Vivaldi Apps",
+  "rules": [
+    {
+      "description": "vivaldi apps : copy - Ctrl+C",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "c",
+            "modifiers": { "mandatory": ["control"] }
+          },
+          "to": [
+            { "key_code": "c", "modifiers": ["command"]  }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": ["^com\\.vivaldi\\.Vivaldi\\.app.*"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "vivaldi apps : paste - Ctrl+V",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "v",
+            "modifiers": { "mandatory": ["control"] }
+          },
+          "to": [
+            { "key_code": "v", "modifiers": ["command"]  }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": ["^com\\.vivaldi\\.Vivaldi\\.app.*"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "vivaldi apps : undo/redo",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": { "key_code": "u", "modifiers": { "mandatory": [ "control" ]} },
+          "to": [ { "key_code": "z", "modifiers": [ "command" ] } ],
+          "conditions": [
+              { "type": "frontmost_application_if", "bundle_identifiers": ["^com\\.vivaldi\\.Vivaldi$"] }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": { "key_code": "y", "modifiers": { "mandatory": [ "control" ]} },
+          "to": [ { "key_code": "z", "modifiers": [ "shift", "command" ] } ],
+          "conditions": [
+              { "type": "frontmost_application_if", "bundle_identifiers": ["^com\\.vivaldi\\.Vivaldi$"] }
+          ]
+        }
+      ]
+    }
+  ]
+}
+      

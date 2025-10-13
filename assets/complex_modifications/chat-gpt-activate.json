@@ -1,0 +1,102 @@
+{
+  "title": "ChatGPT",
+  "rules": [
+    {
+      "description": "ChatGPT : Map left_control + right_shift to option + spacebar",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "right_shift",
+            "modifiers": {
+              "mandatory": ["left_control"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "spacebar",
+              "modifiers": ["option"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "ChatGPT : C+Enter GoogleIME to yosokuhenkan",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "return_or_enter",
+            "modifiers": { "mandatory": ["control"] }
+          },
+          "to": [{ "key_code": "backslash", "modifiers": ["control"] }],
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": ["^com\\.openai\\.chat$"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "ChatGPT : Enter to Shift+Enter",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "return_or_enter"
+          },
+          "to": [{ "key_code": "return_or_enter", "modifiers": ["shift"] }],
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": ["^com\\.openai\\.chat$"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "ChatGPT : Shift+Enter to Enter",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "return_or_enter",
+            "modifiers": { "mandatory": ["shift"] }
+          },
+          "to": [{ "key_code": "return_or_enter" }],
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": ["^com\\.openai\\.chat$"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "ChatGPT : control+m to Enter",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "m",
+            "modifiers": {
+              "mandatory": ["control"]
+            }
+          },
+          "to": [{ "key_code": "return_or_enter" }],
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": ["^com\\.openai\\.chat$"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
