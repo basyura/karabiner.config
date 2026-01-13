@@ -1,24 +1,38 @@
 {
   "title": "WezTerm",
-    "rules": [
-      {
-        "description": "WezTerm - Esc を押したときにIMEをOFFにする",
-        "manipulators": [
-          {
-            "type": "basic",
-            "from": { "key_code": "escape", "modifiers": { "optional": [ "any" ] } },
-            "to": [
-              { "key_code": "lang2" },
-              { "key_code": "escape" } 
-            ],
-            "conditions": [ { 
-                "type": "frontmost_application_if",
-                "bundle_identifiers": [
-                  "^com\\.github\\.wez\\.wezterm"
-                ] 
-            } ]
-          }
-        ]
-      }
-    ]
+  "rules": [
+    {
+      "description": "WezTerm - Esc を押したときにIMEをOFFにする",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": { "key_code": "escape", "modifiers": { "optional": [ "any" ] } },
+          "to": [ { "key_code": "lang2" }, { "key_code": "escape" } ],
+          "conditions": [ { "type": "frontmost_application_if", "bundle_identifiers": [ "^com\\.github\\.wez\\.wezterm" ] } ]
+        }
+      ]
+    },
+    {
+      "description": "WezTerm - <C-j>を押したときにIMEをOFFにする",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": { "key_code": "j", "modifiers": { "mandatory": ["left_control"] } },
+          "to": [ { "key_code": "lang2" }, { "key_code": "escape" } ],
+          "conditions": [ { "type": "frontmost_application_if", "bundle_identifiers": [ "^com\\.github\\.wez\\.wezterm" ] } ]
+        }
+      ]
+    },
+    {
+      "description": "WezTerm - <C-m> → <C-j>",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": { "key_code": "m", "modifiers": { "mandatory": ["left_control"] } },
+          "to": [{ "key_code": "j", "modifiers": ["control"] }],
+          "conditions": [ { "type": "frontmost_application_if", "bundle_identifiers": [ "^com\\.github\\.wez\\.wezterm" ] } ]
+        }
+      ]
+    }
+  ]
 }
