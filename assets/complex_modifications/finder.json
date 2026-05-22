@@ -2,7 +2,7 @@
   "title": "finder",
   "rules": [
     {
-      "description": "switch tab : Ctrl + . / Ctrl + ,",
+      "description": "Finder - switch tab : Ctrl + . / Ctrl + ,",
       "manipulators": [
         {
           "type": "basic",
