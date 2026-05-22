@@ -1,0 +1,30 @@
+{
+  "title": "Shiba.app",
+  "rules": [
+    {
+      "description": "Shiba.app - <C-j> to Esc",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "j",
+            "modifiers": {
+              "mandatory": ["control"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "escape"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": ["^io\\.github\\.rhysd\\.shiba$"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
